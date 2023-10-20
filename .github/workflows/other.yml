@@ -30,6 +30,11 @@ jobs:
             image: ghcr.io/micash545/dev-containers:python-debian
           - dockerfile: ./python/Dockerfile.ubuntu
             image: ghcr.io/micash545/dev-containers:python-ubuntu
+          # Rust
+          - dockerfile: ./rust/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:rust-debian
+          - dockerfile: ./rust/Dockerfile.ubuntu
+            image: ghcr.io/micash545/dev-containers:rust-ubuntu
     steps:
       -
         name: Checkout
