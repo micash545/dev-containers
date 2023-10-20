@@ -1,6 +1,13 @@
 name: Build Dev Containers
 
 on:
+  push:
+    paths:
+    - 'golang/**'
+    - 'nodejs/**'
+    - 'python/**'
+    - 'rust/**'
+
   workflow_run:
     workflows: ["Base Dev Container"]
     types:
