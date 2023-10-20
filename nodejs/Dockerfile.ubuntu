@@ -2,9 +2,9 @@ FROM ghcr.io/micash545/dev-containers:base-ubuntu
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ADD n .
+ADD nodejs/n .
 
-RUN /bin/bash ../n lts && \
+RUN /bin/bash ./n lts && \
    rm n && \
    npm i -g npm yarn pnpm && \
    yarn config set enableTelemetry 0 && \
