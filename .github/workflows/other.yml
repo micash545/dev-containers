@@ -1,0 +1,54 @@
+name: Build Dev Containers
+
+on:
+  workflow_run:
+    workflows: ["Base Dev Container"]
+    types:
+      - completed
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Golang
+          - dockerfile: ./golang/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:golang-debian
+          - dockerfile: ./golang/Dockerfile.ubuntu
+            image: ghcr.io/micash545/dev-containers:golang-ubuntu
+          # Nodejs
+          - dockerfile: ./nodejs/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:nodejs-debian
+          - dockerfile: ./nodejs/Dockerfile.ubuntu
+            image: ghcr.io/micash545/dev-containers:nodejs-ubuntu
+          # Python
+          - dockerfile: ./python/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:python-debian
+          - dockerfile: ./python/Dockerfile.ubuntu
+            image: ghcr.io/micash545/dev-containers:python-ubuntu
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GHCR_USERNAME }}
+          password: ${{ secrets.GHCR_TOKEN }}
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push base image
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          context: .
+          file: ${{ matrix.dockerfile }}
+          tags: ${{ matrix.image }}
