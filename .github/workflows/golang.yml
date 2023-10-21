@@ -1,12 +1,13 @@
-name: Build Base Dev Container
+name: Build Golang Dev Containers
 
 on:
   push:
     paths:
-    - 'base'
-  schedule:
-    - cron: "0 0 * * 0"
-
+    - 'golang/**'
+  workflow_run:
+    workflows: ["Build Base Dev Container"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -16,10 +17,10 @@ jobs:
       matrix:
         include:
           # Golang
-          - dockerfile: ./base/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:base-debian
-          - dockerfile: ./base/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:base-ubuntu
+          - dockerfile: ./golang/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:golang-debian
+          - dockerfile: ./golang/Dockerfile.ubuntu
+            image: ghcr.io/micash545/dev-containers:golang-ubuntu
     steps:
       -
         name: Checkout

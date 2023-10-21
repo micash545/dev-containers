@@ -1,19 +1,13 @@
-name: Build Dev Containers
+name: Build Rust Dev Containers
 
 on:
   push:
     paths:
-    - 'golang/**'
-    - 'nodejs/**'
-    - 'python/**'
     - 'rust/**'
-
   workflow_run:
-    workflows: ["Base Dev Container"]
+    workflows: ["Build Base Dev Container"]
     types:
       - completed
-  schedule:
-    - cron: "0 0 * * 0"
 
 jobs:
   build:
@@ -22,21 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Golang
-          - dockerfile: ./golang/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:golang-debian
-          - dockerfile: ./golang/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:golang-ubuntu
-          # Nodejs
-          - dockerfile: ./nodejs/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:nodejs-debian
-          - dockerfile: ./nodejs/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:nodejs-ubuntu
-          # Python
-          - dockerfile: ./python/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:python-debian
-          - dockerfile: ./python/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:python-ubuntu
           # Rust
           - dockerfile: ./rust/Dockerfile.debian
             image: ghcr.io/micash545/dev-containers:rust-debian

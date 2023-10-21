@@ -1,12 +1,13 @@
-name: Build Base Dev Container
+name: Build Nodejs Dev Containers
 
 on:
   push:
     paths:
-    - 'base'
-  schedule:
-    - cron: "0 0 * * 0"
-
+    - 'nodejs/**'
+  workflow_run:
+    workflows: ["Build Base Dev Container"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -15,11 +16,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Golang
-          - dockerfile: ./base/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:base-debian
-          - dockerfile: ./base/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:base-ubuntu
+          # Nodejs
+          - dockerfile: ./nodejs/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:nodejs-debian
+          - dockerfile: ./nodejs/Dockerfile.ubuntu
+            image: ghcr.io/micash545/dev-containers:nodejs-ubuntu
     steps:
       -
         name: Checkout

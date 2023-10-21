@@ -1,12 +1,13 @@
-name: Build Base Dev Container
+name: Build Python Dev Containers
 
 on:
   push:
     paths:
-    - 'base'
-  schedule:
-    - cron: "0 0 * * 0"
-
+    - 'python/**'
+  workflow_run:
+    workflows: ["Build Base Dev Container"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -15,11 +16,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Golang
-          - dockerfile: ./base/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:base-debian
-          - dockerfile: ./base/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:base-ubuntu
+          # Python
+          - dockerfile: ./python/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:python-debian
+          - dockerfile: ./python/Dockerfile.ubuntu
+            image: ghcr.io/micash545/dev-containers:python-ubuntu
     steps:
       -
         name: Checkout
