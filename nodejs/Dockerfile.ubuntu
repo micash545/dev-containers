@@ -8,4 +8,4 @@ RUN /bin/bash ./n lts && \
    rm n && \
    npm i -g npm yarn pnpm && \
    yarn config set enableTelemetry 0 && \
-   npm cache clean --force
+   npm cache clean
