@@ -1,4 +1,0 @@
-FROM ghcr.io/micash545/dev-containers:base-ubuntu
-
-ENV DEBIAN_FRONTEND=noninteractive
-

@@ -19,8 +19,6 @@ jobs:
           # Docker
           - dockerfile: ./docker/Dockerfile.debian
             image: ghcr.io/micash545/dev-containers:docker-debian
-          - dockerfile: ./docker/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:docker-ubuntu
     steps:
       -
         name: Checkout

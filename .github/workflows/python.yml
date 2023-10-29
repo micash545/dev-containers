@@ -19,8 +19,6 @@ jobs:
           # Python
           - dockerfile: ./python/Dockerfile.debian
             image: ghcr.io/micash545/dev-containers:python-debian
-          - dockerfile: ./python/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:python-ubuntu
     steps:
       -
         name: Checkout
