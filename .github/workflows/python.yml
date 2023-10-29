@@ -8,6 +8,7 @@ on:
     workflows: ["Build Base Dev Container"]
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   build:
