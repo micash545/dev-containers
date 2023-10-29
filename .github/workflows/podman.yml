@@ -1,9 +1,9 @@
-name: Build Rust Dev Containers
+name: Build Podman Dev Containers
 
 on:
   push:
     paths:
-    - 'rust/**'
+    - 'podman/**'
   workflow_run:
     workflows: ["Build Base Dev Container"]
     types:
@@ -18,7 +18,7 @@ jobs:
       matrix:
         include:
           # Podman
-          - dockerfile: ./rust/Dockerfile.debian
+          - dockerfile: ./podman/Dockerfile.debian
             image: ghcr.io/micash545/dev-containers:podman
     steps:
       -
