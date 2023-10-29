@@ -6,6 +6,5 @@ ADD nodejs/n .
 
 RUN /bin/bash ./n lts && \
    rm n && \
-   npm i -g npm yarn pnpm && \
-   yarn config set enableTelemetry 0 && \
-   npm cache clean
+   npm i --cache /tmp/npm-cache -g npm yarn pnpm && \
+   yarn config set enableTelemetry 0
