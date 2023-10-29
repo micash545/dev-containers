@@ -18,7 +18,7 @@ jobs:
         include:
           # Docker
           - dockerfile: ./docker/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:docker-debian
+            image: ghcr.io/micash545/dev-containers:docker
     steps:
       -
         name: Checkout
