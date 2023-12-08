@@ -5,6 +5,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:/root/.local/bin:$PATH
 
+RUN apt-get update && apt-get upgrade -y && \
+   apt-get install -y build-essential && \
+   apt-get clean && \
+   rm -rf /var/lib/{apt,dpkg,cache,log,lists/*}/
+
 RUN curl https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init -o rustup-init && \
    chmod +x rustup-init && \
    ./rustup-init -y --no-modify-path --profile minimal --default-toolchain stable --default-host x86_64-unknown-linux-gnu && \
