@@ -1,6 +1,7 @@
 FROM ghcr.io/micash545/dev-containers:base-debian
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive \
+    PATH=/root/go/bin:$PATH
 
 ARG GOLANG_VERSION=1.21.5
 
