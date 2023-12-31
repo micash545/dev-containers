@@ -5,6 +5,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 ARG GOLANG_VERSION=1.21.5
 
+RUN apt-get update && apt-get upgrade -y && \
+   apt-get install -y build-essential pkg-config && \
+   apt-get clean && \
+   rm -rf /var/lib/{apt,dpkg,cache,log,lists/*}/
+
 RUN wget https://go.dev/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz &&\
     rm -rf /usr/local/go && \
     tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz && \
