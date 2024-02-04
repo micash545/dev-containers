@@ -1,9 +1,9 @@
-name: Build Docker Dev Containers
+name: Build Java Dev Containers
 
 on:
   push:
     paths:
-    - 'docker/**'
+    - 'java/**'
   workflow_run:
     workflows: ["Build Base Dev Container"]
     types:
@@ -17,9 +17,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Docker
-          - dockerfile: ./docker/Dockerfile.debian
-            image: ghcr.io/micash545/dev-containers:docker
+          # Java
+          - dockerfile: ./java/Dockerfile.debian
+            image: ghcr.io/micash545/dev-containers:java
     steps:
       -
         name: Checkout
@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
       -
         name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v2      
       - 
         name: Put current date into a variable
         id: date

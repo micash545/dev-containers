@@ -36,9 +36,9 @@ jobs:
         uses: docker/setup-buildx-action@v2      
       - 
         name: Put current date into a variable
+        id: date
         run: |
-          $NOW=& Get-Date -format yyyy-MM-dd
-          echo "NOW=$NOW" >> $env:GITHUB_ENV
+          echo "::set-output name=date::$(date +'%Y-%m-%d')"V
       -
         name: Build and push
         uses: docker/build-push-action@v4
@@ -46,4 +46,4 @@ jobs:
           push: true
           context: .
           file: ${{ matrix.dockerfile }}
-          tags: ${{ matrix.image }} ${{ matrix.image }}-${{env.NOW}}
+          tags: ${{ matrix.image }} ${{ matrix.image }}-${{ steps.date.outputs.date }}
