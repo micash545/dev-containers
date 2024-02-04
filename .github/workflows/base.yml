@@ -47,4 +47,6 @@ jobs:
           push: true
           context: .
           file: ${{ matrix.dockerfile }}
-          tags: ${{ matrix.image }} ${{ matrix.image }}-${{ steps.date.outputs.date }}
+          tags: |
+            ${{ matrix.image }} 
+            ${{ matrix.image }}-${{ steps.date.outputs.date }}
