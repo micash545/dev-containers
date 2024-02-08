@@ -38,7 +38,7 @@ jobs:
         name: Put current date into a variable
         id: date
         run: |
-          echo "::set-output name=date::$(date +'%Y-%m-%d')"V
+          echo "::set-output name=date::$(date +'%Y-%m-%d')"
       -
         name: Build and push
         uses: docker/build-push-action@v4
