@@ -3,7 +3,7 @@ FROM ghcr.io/micash545/dev-containers:base-debian
 ENV DEBIAN_FRONTEND=noninteractive \
     PATH=/root/go/bin:$PATH
 
-ARG GOLANG_VERSION=1.21.7
+ARG GOLANG_VERSION=1.22.2
 
 RUN apt-get update && apt-get upgrade -y && \
    apt-get install -y build-essential pkg-config && \
