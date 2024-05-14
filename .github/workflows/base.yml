@@ -19,8 +19,8 @@ jobs:
           # Golang
           - dockerfile: ./base/Dockerfile.debian
             image: ghcr.io/micash545/dev-containers:base-debian
-          - dockerfile: ./base/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:base-ubuntu
+          #- dockerfile: ./base/Dockerfile.ubuntu
+          #  image: ghcr.io/micash545/dev-containers:base-ubuntu
     steps:
       -
         name: Checkout
