@@ -20,8 +20,8 @@ jobs:
           # Nodejs
           - dockerfile: ./nodejs/Dockerfile.debian
             image: ghcr.io/micash545/dev-containers:nodejs
-          - dockerfile: ./nodejs/Dockerfile.ubuntu
-            image: ghcr.io/micash545/dev-containers:nodejs-ubuntu
+          #- dockerfile: ./nodejs/Dockerfile.ubuntu
+          #  image: ghcr.io/micash545/dev-containers:nodejs-ubuntu
     steps:
       -
         name: Checkout
